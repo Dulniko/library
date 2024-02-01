@@ -1,0 +1,26 @@
+- model: catalog.author
+  pk: 1
+  fields:
+    firstname: Andrzej
+    lastname: Sapkowski
+    alive: true
+    address: Łódź
+    zipcode: 90-008
+    telephone: '123123123'
+    recommendedby:
+    joindate: '2024-01-20'
+    popularity_score: 80
+    followers: []
+- model: catalog.author
+  pk: 2
+  fields:
+    firstname: Stephen
+    lastname: King
+    alive: false
+    address: Broadway
+    zipcode: '04401'
+    telephone: '213213213'
+    recommendedby:
+    joindate: '2024-01-19'
+    popularity_score: 77
+    followers: []

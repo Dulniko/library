@@ -15,3 +15,9 @@ Unit tests are run using pytest. To run the tests, run the following command:
 ```bash
 pytest
 ```
+
+## Database
+The database is a postgresql database. To create the database in container, run the following command:
+```bash
+invoke run-postgres
+```

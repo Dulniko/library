@@ -5,7 +5,7 @@ from tests.helpers import load_fixture
 
 
 @pytest.mark.django_db
-@load_fixture(("tests/fixtures/authors.yaml",))
+@load_fixture(("tests/fixtures/authors.yaml", ))
 def test_author_list(admin_client):
     url = reverse("author-list")
     response = admin_client.get(url)

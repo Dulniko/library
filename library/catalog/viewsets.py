@@ -17,12 +17,13 @@ class UserViewSet(ModelViewSet):
 
 
 class AuthorViewSet(ModelViewSet):
-    queryset = Author.objects.all()
+    queryset = Author.objects.all().prefetch_related("recommendedby",
+                                                     "followers")
     serializer_class = AuthorSerializer
 
 
 class BookViewSet(ModelViewSet):
-    queryset = Book.objects.all()
+    queryset = Book.objects.select_related("publisher", "author").all()
     serializer_class = BookSerializer
 
 

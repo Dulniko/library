@@ -13,7 +13,6 @@ class Author(models.Model):
         "Author",
         on_delete=models.CASCADE,
         related_name="recommended_authors",
-        related_query_name="recommended_authors",
         null=True,
         blank=True,
     )
@@ -21,7 +20,6 @@ class Author(models.Model):
     popularity_score = models.IntegerField(blank=True, null=True)
     followers = models.ManyToManyField(User,
                                        related_name="followed_authors",
-                                       related_query_name="followed_authors",
                                        blank=True)
 
     def __str__(self):
@@ -37,13 +35,11 @@ class Book(models.Model):
         "Author",
         on_delete=models.CASCADE,
         related_name="books",
-        related_query_name="books",
     )
     publisher = models.ForeignKey(
         "Publisher",
         on_delete=models.CASCADE,
         related_name="books",
-        related_query_name="books",
     )
 
     def __str__(self):

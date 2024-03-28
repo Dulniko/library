@@ -21,3 +21,13 @@ The database is a postgresql database. To create the database in container, run 
 ```bash
 invoke run-postgres
 ```
+
+## Asynchronous tasks
+Asynchronous tasks are run using celery and redis as the message broker. To run the redis server, run the following command:
+```bash
+docker run -d -p 6379:6379 redis
+```
+To run the celery worker, run the following command:
+```bash
+celery -A library worker --loglevel=info
+```

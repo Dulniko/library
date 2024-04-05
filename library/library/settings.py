@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "drf_spectacular",
+    "django_celery_results",
     # INTERNAL_APPS
     "catalog.apps.CatalogConfig",
 ]
@@ -46,7 +47,7 @@ REST_FRAMEWORK = {
 }
 
 CELERY_BROKER_URL = "redis://localhost:6379/0"
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "django-db"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

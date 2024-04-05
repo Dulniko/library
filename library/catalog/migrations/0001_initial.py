@@ -19,38 +19,90 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Publisher',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
                 ('joindate', models.DateField()),
-                ('popularity_score', models.PositiveSmallIntegerField(blank=True, null=True)),
+                ('popularity_score',
+                 models.PositiveSmallIntegerField(blank=True, null=True)),
             ],
         ),
         migrations.CreateModel(
             name='Author',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
                 ('firstname', models.CharField(max_length=100)),
                 ('lastname', models.CharField(max_length=100)),
                 ('alive', models.BooleanField()),
-                ('address', models.CharField(blank=True, max_length=200, null=True)),
-                ('zipcode', models.CharField(blank=True, max_length=5, null=True, validators=[django.core.validators.RegexValidator(message='Zip code must be composed of 5 digits.', regex='^\\d{5}$')])),
-                ('telephone', models.CharField(blank=True, null=True, unique=True, validators=[django.core.validators.RegexValidator(message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.", regex='^\\+?1?\\d{9,15}$')])),
-                ('joindate', models.DateField(validators=[django.core.validators.MaxValueValidator(limit_value=django.utils.timezone.now)])),
-                ('popularity_score', models.PositiveIntegerField(blank=True, null=True)),
-                ('followers', models.ManyToManyField(blank=True, related_name='followed_authors', to=settings.AUTH_USER_MODEL)),
-                ('recommendedby', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='recommended_authors', to='catalog.author')),
+                ('address',
+                 models.CharField(blank=True, max_length=200, null=True)),
+                ('zipcode',
+                 models.CharField(
+                     blank=True,
+                     max_length=5,
+                     null=True,
+                     validators=[
+                         django.core.validators.RegexValidator(
+                             message='Zip code must be composed of 5 digits.',
+                             regex='^\\d{5}$')
+                     ])),
+                ('telephone',
+                 models.CharField(
+                     blank=True,
+                     null=True,
+                     unique=True,
+                     validators=[
+                         django.core.validators.RegexValidator(
+                             message=
+                             "Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.",
+                             regex='^\\+?1?\\d{9,15}$')
+                     ])),
+                ('joindate',
+                 models.DateField(validators=[
+                     django.core.validators.MaxValueValidator(
+                         limit_value=django.utils.timezone.now)
+                 ])),
+                ('popularity_score',
+                 models.PositiveIntegerField(blank=True, null=True)),
+                ('followers',
+                 models.ManyToManyField(blank=True,
+                                        related_name='followed_authors',
+                                        to=settings.AUTH_USER_MODEL)),
+                ('recommendedby',
+                 models.ForeignKey(blank=True,
+                                   null=True,
+                                   on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='recommended_authors',
+                                   to='catalog.author')),
             ],
         ),
         migrations.CreateModel(
             name='Book',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
                 ('title', models.CharField(max_length=100)),
                 ('genre', models.CharField(max_length=200)),
                 ('price', models.IntegerField(blank=True, null=True)),
                 ('published_date', models.DateField()),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='books', to='catalog.author')),
-                ('publisher', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='books', to='catalog.publisher')),
+                ('author',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='books',
+                                   to='catalog.author')),
+                ('publisher',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='books',
+                                   to='catalog.publisher')),
             ],
         ),
     ]
